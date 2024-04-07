@@ -1,10 +1,8 @@
 public class Node {
-    int data;
-    Node right;
-    Node left;
-    public Node(int data){
+    treeNode data;
+    Node next;
+    public Node(treeNode data){
         this.data = data;
-        this.right = null;
-        this.left = null;
+        this.next = null;
     }
 }
