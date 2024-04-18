@@ -58,6 +58,45 @@ public class BST {
                 queue.enqueue(temp.right);
             }
         }
+        System.out.println("\nNot found");
+    }
+    public int minValue(treeNode root){
+        if(root.left==null){
+            return root.data;
+        }
+        return minValue(root.left);
+    }
+    public void deleteNode(int value){
+        root = delete(root, value);
+    }
+    public treeNode delete(treeNode root, int target){
+        if(root==null){
+            return null;
+        }
+        if(root.data==target){
+            if(root.right==null && root.left==null){
+                return null;
+            }
+            if(root.right==null){
+                return root.left;
+            }
+            if(root.left==null){
+                return root.right;
+            }
+            int minVal = minValue(root);
+            root.data = minVal;
+            root.right = delete(root, minVal);
+            return root;
+        }
+        if(root.data>target){
+            root.left = delete(root.left,target);
+            return root;
+        }
+        if(root.data<target){
+            root.right = delete(root.right,target);
+            return root;
+        }
+        return null;
     }
     public void inOrder(){
         inOrderTraversal(root);
